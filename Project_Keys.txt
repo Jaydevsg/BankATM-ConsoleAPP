@@ -1,0 +1,91 @@
+Module-1
+Create Account:
+Account no- Pk
+
+
+Module-2
+Card Activation:
+Account no- Fk--> ref (Create Account)
+
+Module-3
+PIN Create                                                           PIN Change
+Account no- Fk--> ref (Create Account)             Account no-Fk--> ref (Create Account)
+
+Module-4
+Account Type
+Savings                                                                    Current
+CID - Pk                                                                  CID-Pk
+Enter PIN - Fk--> ref (create PIN)                           Enter PIN - Fk--> ref (create PIN) 
+
+Module-5
+Cash Deposit
+Savings                                                                  Current
+CID - Fk-->ref (Account Type-Saving)	         CID - Fk-->ref (Account Type-Current)
+Enter PIN -Fk-->ref(create PIN)                            Enter PIN -Fk-->ref(create PIN) 
+
+Withdrawal
+Savings                                                                     Current
+CID - Fk-->ref (Account Type-Saving)                     CID-Fk-->ref (Account Type-Current)  
+Enter PIN - Fk-->ref(create PIN)                              Enter PIN - Fk-->ref(create PIN)     
+
+Module-6
+Banking Type
+Same                                                                                                                          Other
+Account num(Payee) - Fk-->ref(Create Account)                                               Account num(payee)-Fk-->ref(Create Account)
+CID - Fk-->ref (Account Type-Saving)/ ref (Account Type-Current)                  CID - Fk-->ref (Account Type-Saving)/ ref (Account Type-Current)
+PIN -Fk-->ref(create PIN)                                                                                      PIN-Fk-->ref(create PIN)  
+****************************************************************************************************************************************************
+SQL Comments
+CreateAccout: 
+
+create table CreateAccount
+(AccountId int primary key not null identity(100,1),
+BankName varchar(100) ,
+FirstName varchar(100),
+LastName Varchar(100),
+DateOfBirth date,
+Email varchar(100),
+PANnumber nvarchar(10),
+TypeOfAccount varchar(100),
+PhoneNumber nvarchar(11),
+AnnualIncome  decimal(10,4),
+Nominee varchar(100)
+)
+alter table CreateAccount alter column PANnumber varchar(10)
+alter table CreateAccount alter column PhoneNumber varchar(10)
+alter table CreateAccount alter column DateOfBirth date
+
+insert into CreateAccount (BankName,FirstName,LastName,DateOfBirth,Email,PANnumber,TypeOfAccount,PhoneNumber,AnnualIncome,Nominee) values
+('Bank A','Ram','D','5114-01-10','RamD@email.com','RAMD1234S','Personal','9876543210','150001.00','Sitha K');
+
+select * from CreateAccount
+*****************************
+create table CreateAccount
+(AccountId int primary key not null identity(100,1),
+BankName varchar(100) ,
+FirstName varchar(100),
+LastName Varchar(100),
+DateOfBirth date,
+Email varchar(100),
+PANnumber nvarchar(10),
+TypeOfAccount varchar(100),
+PhoneNumber nvarchar(11),
+AnnualIncome  decimal(10,4),
+Nominee varchar(100)
+)
+alter table CreateAccount alter column PANnumber varchar(10)
+alter table CreateAccount alter column PhoneNumber varchar(10)
+alter table CreateAccount alter column DateOfBirth varchar(10)
+
+insert into CreateAccount (BankName,FirstName,LastName,DateOfBirth,Email,PANnumber,TypeOfAccount,PhoneNumber,AnnualIncome,Nominee) values
+('Bank A','Ram','D','5114-01-10','RamD@email.com','RAMD1234S','Personal','9876543210','150001.00','Sitha K');
+
+select * from CreateAccount
+
+create table ATMCard
+(
+CardNumber BIGINT primary key identity(1000100010001000,1),
+
+)
+
+
